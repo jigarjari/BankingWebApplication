@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Transactions";
+}
+@await Html.PartialAsync("_CustNavbar")
+
+<h1>Transactions</h1>
+
+<div>
+    <h4>Transactions</h4>
+    <hr />
+    <table class="table table-bordered table-active">
+        <tr class="row-cols-md-2">
+            <th>Account No</th>
+            <th>Amount</th>
+            <th>Type</th>
+        </tr>
+        @foreach (var t in ViewBag.transactions)
+        {
+            <tr>
+                <td>@t.acno</td>
+                @if (t.type == "CR")
+                {
+                    <td style="color:green">@t.amount</td>
+                }
+                else
+                {
+                    <td style="color:red">@t.amount</td>
+                }
+                <td>@t.type</td>
+            </tr>
+        }
+    </table>
+</div>

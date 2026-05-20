@@ -1,0 +1,38 @@
+﻿@model WebApplication1.Models.loginStaff
+
+@{
+    ViewData["Title"] = "staffLogin";
+}
+
+<h1>staffLogin</h1>
+        
+<h1 style="color:red">@TempData["fail"]</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="staffLogin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="staffId" class="control-label"></label>
+                <input asp-for="staffId" class="form-control" />
+                <span asp-validation-for="staffId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loginPwd" class="control-label"></label>
+                <input asp-for="loginPwd" class="form-control" />
+                <span asp-validation-for="loginPwd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    Don't have an Account ? then Click Here <a asp-controller="bank" asp-action="staffRegister">Register</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

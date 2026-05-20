@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@await Html.PartialAsync("_StaffNavbar")
+<h1>Dashboard</h1>
+<br /><br />
+@if (TempData["successUpdate"] != null)
+{
+    <script>alert('@TempData["successUpdate"]')</script>
+}
+<form asp-action="staffDashboard" method="post">
+    <h5>Enter Account No to Search : </h5>
+    <input type="number" name="accountNo"/>
+    <input type="submit" value="Search"/>
+    <br />
+</form><br /><br />
+@if(ViewBag.customer != null)
+{
+    <h4>Account No : @ViewBag.customer.acno</h4><br /><br />
+    <h4>Name : @ViewBag.customer.name</h4><br /><br />
+    <h4>Balance : @ViewBag.customer.balance</h4>
+    <br />
+    <br />
+    <h4>BranchId : @ViewBag.customer.branchId</h4>
+    <br />
+    <br />
+}
+else
+{
+    <h3>No Data Here</h3>
+}
+

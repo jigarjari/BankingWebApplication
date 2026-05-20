@@ -1,0 +1,52 @@
+﻿@model WebApplication1.Models.loginCustomer
+
+@{
+    ViewData["Title"] = "custLogin";
+}
+
+<h1>custLogin</h1>
+
+@if (TempData["success"] != null)
+{
+    <script>
+        alert('@TempData["success"]');
+    </script>
+}
+@if (TempData["successLogin"] != null)
+{
+    <h1 style="color:green">@TempData["successLogin"]</h1>
+}
+else
+{
+    <h1 style="color:red">@TempData["fail"]</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="custLogin" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="acno" class="control-label"></label>
+                    <input asp-for="acno" class="form-control" />
+                    <span asp-validation-for="acno" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="loginPwd" class="control-label"></label>
+                    <input asp-for="loginPwd" class="form-control" />
+                    <span asp-validation-for="loginPwd" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<div>
+    Not have an Account ? then Click Here <a asp-controller="bank" asp-action="custRegister">Register</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

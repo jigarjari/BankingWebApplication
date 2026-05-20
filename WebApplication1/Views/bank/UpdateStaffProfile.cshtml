@@ -1,0 +1,51 @@
+﻿@model WebApplication1.Models.staffTB
+
+@{
+    ViewData["Title"] = "UpdateStaffProfile";
+}
+
+<h1>UpdateStaffProfile</h1>
+@if (TempData["fail"] != null)
+{
+    <h4>@TempData["fail"]</h4>
+}
+<h4>staffTB</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateStaffProfile" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="staffId" class="control-label"></label>
+                <input asp-for="staffId" class="form-control" value="@ViewBag.staff.staffId" readonly/>
+                <span asp-validation-for="staffId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" value="@ViewBag.staff.name" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loginPwd" class="control-label"></label>
+                <input asp-for="loginPwd" class="form-control" value="@ViewBag.staff.loginPwd" />
+                <span asp-validation-for="loginPwd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="branchId" class="control-label"></label>
+                <input asp-for="branchId" class="form-control" value="@ViewBag.staff.branchId" />
+                <span asp-validation-for="branchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

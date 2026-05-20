@@ -1,0 +1,49 @@
+﻿@model WebApplication1.Models.Transfer
+
+@{
+    ViewData["Title"] = "Transfer";
+}
+@await Html.PartialAsync("_CustNavbar")
+
+<h1>Transfer</h1>
+@if (TempData["failTransfer"] != null)
+{
+    <h4 style="color:red">@TempData["failTransfer"]</h4>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Transfer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="toAcno" class="control-label"></label>
+                <input asp-for="toAcno" class="form-control" />
+                <span asp-validation-for="toAcno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amount" class="control-label"></label>
+                <input asp-for="amount" class="form-control" />
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="transPwd" class="control-label"></label>
+                <input asp-for="transPwd" class="form-control" />
+                <span asp-validation-for="transPwd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Transfer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
